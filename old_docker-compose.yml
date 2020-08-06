@@ -48,14 +48,12 @@ services:
    networks:
       - fila
  worker:
-   build: worker
+   image: python:3.6
    volumes:
       # Worker
       - ./worker:/worker
    working_dir: /worker
-   environment: 
-      - PYTHONUNBUFFERED=1
-   command: worker.py
+   command: bash ./app.sh
    networks: 
       - fila
    depends_on: 
